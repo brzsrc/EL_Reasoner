@@ -60,7 +60,12 @@ class Individual:
         return False
     
     def contain_concept(self, concept:JavaObject) -> bool:
-        return (concept in self.concepts)
+        # for concept in self.concepts:
+        #     printDebug(concept)
+        if concept in self.concepts:
+            return True
+        # print(self.idx)
+        return False
 
     def __str__(self) -> str:
         ret = utils.bold("INDIVIDUAL \"" + str(self.idx) + "\"\n")
@@ -116,8 +121,9 @@ class EL_Reasoner:
         return None
 
     def convert_equivalence_axiom_to_gci(self, axiom:JavaObject) -> JavaObject:
-        gci = elFactory.getGCI(axiom.getConcepts()[0],axiom.getConcepts()[1])
-        return gci
+        gci1 = elFactory.getGCI(axiom.getConcepts()[0],axiom.getConcepts()[1])
+        gci2 = elFactory.getGCI(axiom.getConcepts()[1],axiom.getConcepts()[0])
+        return gci1, gci2
 
 
     def _apply_true_rule(self, individual:Individual) -> bool:
@@ -173,6 +179,12 @@ class EL_Reasoner:
     def _apply_GCI_rule(self, individual:Individual, gci_axiom:JavaObject) -> bool:
         lhs_concept = gci_axiom.lhs()
         printDebug(lhs_concept)
+        # print(lhs_concept.toString())
+        # margherita = elFactory.getConceptName('"Margherita"')
+        # if margherita == lhs_concept:
+            # for c in individual.get_concepts():
+                # print("aaaaaaaa")
+                # printDebug(c)
         rhs_concept = gci_axiom.rhs()
         printDebug(rhs_concept)
         if individual.contain_concept(lhs_concept):
@@ -180,14 +192,14 @@ class EL_Reasoner:
         return False
     
     def apply_el_algo(self, init_concept:JavaObject):
-        init_individual = Individual(0, init_concept)
+        init_individual = Individual(1, init_concept)
         self.individuals.add(init_individual)
         changed = True
         while changed:
             changed = False
             for individual in list(self.individuals):
                 for concept in self.allConcepts:
-                    printDebug(concept)
+                    # printDebug(concept)
                     conceptType = concept.getClass().getSimpleName()
                     if(conceptType == "TopConcept$"):
                         changed = changed or self._apply_true_rule(individual)
@@ -199,13 +211,16 @@ class EL_Reasoner:
                         changed = changed or self._apply_existential_role_restriction_rule2(individual, concept)
 
                 for axiom in self.axioms:
-                    printDebug(axiom)
+                    # printDebug(axiom)
                     axiomType = axiom.getClass().getSimpleName() 
+
                     if(axiomType == "GeneralConceptInclusion"):
+                        # printDebug(axiom)
                         changed = changed or self._apply_GCI_rule(individual, axiom)
                     elif(axiomType == "EquivalenceAxiom"):
-                        gci_axiom = self.convert_equivalence_axiom_to_gci(axiom)
-                        changed = changed or self._apply_GCI_rule(individual, gci_axiom)
+                        gci_axiom1, gci_axiom2 = self.convert_equivalence_axiom_to_gci(axiom)
+                        changed = changed or self._apply_GCI_rule(individual, gci_axiom1)
+                        changed = changed or self._apply_GCI_rule(individual, gci_axiom2)
     
     def get_subsumers(self, concept: JavaObject) -> list:
         for individual in self.individuals:
@@ -218,6 +233,7 @@ class EL_Reasoner:
 
 
 def main():
+    # ontology = parser.parseFile("ABCD.owx")
     ontology = parser.parseFile("pizza.owl")
 
     # Simplify Conjunctions to two members
@@ -227,7 +243,8 @@ def main():
     allConcepts = ontology.getSubConcepts()
     allAxioms = ontology.tbox().getAxioms()
 
-    conceptD = elFactory.getConceptName("Margherita")
+    conceptD = elFactory.getConceptName('"Margherita"')
+    # conceptD = elFactory.getConceptName("C")
     el_reasoner = EL_Reasoner(allConcepts, allAxioms)
     ind = el_reasoner.apply_el_algo(conceptD)
     for ind in el_reasoner.get_individuals():
