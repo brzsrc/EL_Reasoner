@@ -2,6 +2,7 @@ from py4j.java_gateway import JavaGateway
 from py4j.java_collections import JavaArray, JavaObject, JavaSet
 from typing import List, Dict, Optional, cast, Callable, Set, Tuple
 import utils
+import sys
 
 # connect to the java gateway of dl4python
 gateway = JavaGateway()
@@ -227,14 +228,28 @@ class EL_Reasoner:
             if individual.get_init_concept() == concept:
                 return list(map(formatter.format, list(individual.get_concepts())))
         return None
-        
-
+    
+    def print_subsumers(self, concept: JavaObject) -> list:
+        for individual in self.individuals:
+            if individual.get_init_concept() == concept:
+                concept_list = []
+                for concept in individual.get_concepts():       
+                    conceptName = concept.getClass().getSimpleName()
+                    if conceptName == "ConceptName" or conceptName == "TopConcept$":
+                        concept_list.append(formatter.format(concept))
+                return concept_list
+        return None
 
 
 
 def main():
+    assert(len(sys.argv) == 3)
+    ontology_path = sys.argv[1]
+    conceptSeedName = sys.argv[2]
+
     # ontology = parser.parseFile("ABCD.owx")
-    ontology = parser.parseFile("pizza.owl")
+    # ontology = parser.parseFile("pizza.owl")
+    ontology = parser.parseFile(ontology_path)
 
     # Simplify Conjunctions to two members
     gateway.convertToBinaryConjunctions(ontology)
@@ -243,16 +258,20 @@ def main():
     allConcepts = ontology.getSubConcepts()
     allAxioms = ontology.tbox().getAxioms()
 
-    conceptD = elFactory.getConceptName('"Margherita"')
+    # conceptSeed = elFactory.getConceptName('"Margherita"')
     # conceptD = elFactory.getConceptName("C")
+    conceptSeed = elFactory.getConceptName(conceptSeedName)
+
     el_reasoner = EL_Reasoner(allConcepts, allAxioms)
-    ind = el_reasoner.apply_el_algo(conceptD)
-    for ind in el_reasoner.get_individuals():
-        print(ind)
+    ind = el_reasoner.apply_el_algo(conceptSeed)
+    # for ind in el_reasoner.get_individuals():
+    #     print(ind)
     
-    subsumers = el_reasoner.get_subsumers(conceptD)
+    subsumers = el_reasoner.print_subsumers(conceptSeed)
     if subsumers:
-        print(subsumers)
+        for subsumer in subsumers:
+            print(subsumer)
+    
 
 if __name__ == '__main__':
     main()
