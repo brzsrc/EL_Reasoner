@@ -148,7 +148,10 @@
         <Class IRI="#InariMiniISO"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IngredientType"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JapaneeseMayonnaise"/>
@@ -197,9 +200,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#MoromiMiso"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#NamedSushi"/>
     </Declaration>
     <Declaration>
         <Class IRI="#NatsuMaki"/>
@@ -358,7 +358,7 @@
         <Class IRI="#SuMiso"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Sushi"/>
     </Declaration>
     <Declaration>
         <Class IRI="#SushiType"/>
@@ -460,12 +460,6 @@
         <ObjectProperty IRI="#hasIngredient"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasOrgan"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasOrigin"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#hasSpiciness"/>
     </Declaration>
     <Declaration>
@@ -478,10 +472,112 @@
         <ObjectProperty IRI="#hasType"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isOrganOf"/>
+        <ObjectProperty IRI="#ispartof"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasCalorificvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isExpiredIn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AvocadoMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BeefNigiri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BeefTataki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CaliforniaRoll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CrispyDuckAndMoromiMiso"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CrispyDuckFutomaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CrispySalmonSkinISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CrunchyPrawnISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CucumberMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Egg1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InariMiniISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#KaisoGunkan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MasagoGunkan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NatsuMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PrawnAndChiveMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PrawnNigiri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RainbowRoll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SalmonDragonRoll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SalmonMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SalmonNigiri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SalmonSashimi"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SesameSearedSalmon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SoftShellCrabHandRoll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SoftShellCrabISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SpicyChickenISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SpicyTunaMiniISO"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TamagoNigiri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TunaMaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TunaNigiri"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TunaSashimi"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#VegetableFutomaki"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#VegetableHandRoll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YoRoll"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#BBQ"/>
@@ -494,7 +590,7 @@
     <EquivalentClasses>
         <Class IRI="#PescatarianIngredient"/>
         <ObjectIntersectionOf>
-            <Class IRI="#SushiIngredient"/>
+            <Class IRI="#Ingredient"/>
             <ObjectComplementOf>
                 <Class IRI="#Meat"/>
             </ObjectComplementOf>
@@ -507,7 +603,7 @@
     <EquivalentClasses>
         <Class IRI="#SpicyIngredient"/>
         <ObjectIntersectionOf>
-            <Class IRI="#SushiIngredient"/>
+            <Class IRI="#Ingredient"/>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasSpiciness"/>
                 <Class IRI="#Spicy"/>
@@ -517,11 +613,21 @@
     <EquivalentClasses>
         <Class IRI="#SweetIngredient"/>
         <ObjectIntersectionOf>
-            <Class IRI="#SushiIngredient"/>
+            <Class IRI="#Ingredient"/>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasTaste"/>
                 <Class IRI="#Sweet"/>
             </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Tamago"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Egg"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasCookingStyle"/>
+                <Class IRI="#Boiled"/>
+            </ObjectAllValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -557,7 +663,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AvocadoMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AvocadoMaki"/>
@@ -620,7 +726,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BeefNigiri"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BeefNigiri"/>
@@ -683,7 +789,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BeefTataki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BeefTataki"/>
@@ -743,7 +849,11 @@
     <SubClassOf>
         <Class IRI="#Bitter"/>
         <ObjectComplementOf>
-            <Class IRI="#Sweet"/>
+            <ObjectUnionOf>
+                <Class IRI="#Savoury"/>
+                <Class IRI="#Sour"/>
+                <Class IRI="#Sweet"/>
+            </ObjectUnionOf>
         </ObjectComplementOf>
     </SubClassOf>
     <SubClassOf>
@@ -767,7 +877,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CaliforniaRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CaliforniaRoll"/>
@@ -850,7 +960,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CookingStyle"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Coriander"/>
@@ -877,11 +987,11 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Crispy"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispyDuckAndMoromiMiso"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispyDuckAndMoromiMiso"/>
@@ -936,7 +1046,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispyDuckFutomaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispyDuckFutomaki"/>
@@ -1003,7 +1113,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispySalmonSkinISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrispySalmonSkinISO"/>
@@ -1066,7 +1176,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrunchyPrawnISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CrunchyPrawnISO"/>
@@ -1138,7 +1248,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CucumberMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#CucumberMaki"/>
@@ -1189,11 +1299,11 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Doneness"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Dressing"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Duck"/>
@@ -1201,7 +1311,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Egg"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Fish"/>
@@ -1217,7 +1327,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Fruit"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Futomaki"/>
@@ -1225,7 +1335,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Grains"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Grilled"/>
@@ -1260,7 +1370,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#InariMiniISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#InariMiniISO"/>
@@ -1326,7 +1436,11 @@
         </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#Ingredient"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IngredientType"/>
         <Class abbreviatedIRI="owl:Thing"/>
     </SubClassOf>
     <SubClassOf>
@@ -1343,7 +1457,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#KaisoGunkan"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#KaisoGunkan"/>
@@ -1427,7 +1541,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MasagoGunkan"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MasagoGunkan"/>
@@ -1492,7 +1606,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Meat"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Medium"/>
@@ -1515,12 +1629,8 @@
         <Class IRI="#Miso"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#NamedSushi"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#NatsuMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#NatsuMaki"/>
@@ -1619,7 +1729,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Omelette"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Omelette"/>
@@ -1634,7 +1744,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Pickled"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Pickles"/>
@@ -1664,7 +1774,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PrawnAndChiveMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PrawnAndChiveMaki"/>
@@ -1735,7 +1845,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PrawnNigiri"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PrawnNigiri"/>
@@ -1794,7 +1904,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#RainbowRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#RainbowRoll"/>
@@ -1835,7 +1945,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#RicePaper"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Rocket"/>
@@ -1846,15 +1956,8 @@
         <Class IRI="#Fish"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Salmon"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasOrgan"/>
-            <Class IRI="#SalmonSkin"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#SalmonDragonRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonDragonRoll"/>
@@ -1929,7 +2032,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonMaki"/>
@@ -1980,7 +2083,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonNigiri"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonNigiri"/>
@@ -2005,7 +2108,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonSashimi"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SalmonSashimi"/>
@@ -2019,13 +2122,6 @@
         <Class IRI="#Seafood"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#SalmonSkin"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#isOrganOf"/>
-            <Class IRI="#Salmon"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Sashimi"/>
         <Class IRI="#SushiType"/>
     </SubClassOf>
@@ -2036,12 +2132,16 @@
     <SubClassOf>
         <Class IRI="#Savoury"/>
         <ObjectComplementOf>
-            <Class IRI="#Sweet"/>
+            <ObjectUnionOf>
+                <Class IRI="#Bitter"/>
+                <Class IRI="#Sour"/>
+                <Class IRI="#Sweet"/>
+            </ObjectUnionOf>
         </ObjectComplementOf>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Seafood"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Seared"/>
@@ -2049,7 +2149,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Seasoning"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Seaweed"/>
@@ -2069,7 +2169,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SesameSearedSalmon"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SesameSearedSalmon"/>
@@ -2131,7 +2231,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Shreded"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SmeltFishRoe"/>
@@ -2143,7 +2243,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SoftShellCrabHandRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SoftShellCrabHandRoll"/>
@@ -2242,7 +2342,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SoftShellCrabISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SoftShellCrabISO"/>
@@ -2326,7 +2426,11 @@
     <SubClassOf>
         <Class IRI="#Sour"/>
         <ObjectComplementOf>
-            <Class IRI="#Sweet"/>
+            <ObjectUnionOf>
+                <Class IRI="#Bitter"/>
+                <Class IRI="#Savoury"/>
+                <Class IRI="#Sweet"/>
+            </ObjectUnionOf>
         </ObjectComplementOf>
     </SubClassOf>
     <SubClassOf>
@@ -2335,7 +2439,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Spiciness"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Spiciness"/>
@@ -2351,7 +2455,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SpicyChickenISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SpicyChickenISO"/>
@@ -2433,7 +2537,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SpicyTunaMiniISO"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SpicyTunaMiniISO"/>
@@ -2507,16 +2611,22 @@
         <Class IRI="#Miso"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#SushiIngredient"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#SushiType"/>
         <Class abbreviatedIRI="owl:Thing"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Sweet"/>
         <Class IRI="#Taste"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sweet"/>
+        <ObjectComplementOf>
+            <ObjectUnionOf>
+                <Class IRI="#Bitter"/>
+                <Class IRI="#Savoury"/>
+                <Class IRI="#Sour"/>
+            </ObjectUnionOf>
+        </ObjectComplementOf>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SweetChillMayonnaise"/>
@@ -2549,7 +2659,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TamagoNigiri"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TamagoNigiri"/>
@@ -2584,7 +2694,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Taste"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Tempura"/>
@@ -2600,7 +2710,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaMaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaMaki"/>
@@ -2651,7 +2761,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaNigiri"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaNigiri"/>
@@ -2676,7 +2786,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaSashimi"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TunaSashimi"/>
@@ -2701,11 +2811,11 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Vegetable"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#VegetableFutomaki"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#VegetableFutomaki"/>
@@ -2780,7 +2890,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#VegetableHandRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#VegetableHandRoll"/>
@@ -2888,26 +2998,12 @@
         <Class IRI="#Tuna"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#YellowfinTuna"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasOrgan"/>
-            <Class IRI="#YellowfinTunaLoin"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#YellowfinTunaLoin"/>
         <Class IRI="#Seafood"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#YellowfinTunaLoin"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#isOrganOf"/>
-            <Class IRI="#YellowfinTuna"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#YoRoll"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#YoRoll"/>
@@ -3482,6 +3578,143 @@
         <Class IRI="#Vegetable"/>
         <Class IRI="#Wheat"/>
     </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#AvocadoMaki"/>
+        <NamedIndividual IRI="#AvocadoMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BeefNigiri"/>
+        <NamedIndividual IRI="#BeefNigiri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BeefTataki"/>
+        <NamedIndividual IRI="#BeefTataki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CaliforniaRoll"/>
+        <NamedIndividual IRI="#CaliforniaRoll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CrispyDuckAndMoromiMiso"/>
+        <NamedIndividual IRI="#CrispyDuckAndMoromiMiso"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CrispyDuckFutomaki"/>
+        <NamedIndividual IRI="#CrispyDuckFutomaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CrispySalmonSkinISO"/>
+        <NamedIndividual IRI="#CrispySalmonSkinISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CrunchyPrawnISO"/>
+        <NamedIndividual IRI="#CrunchyPrawnISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CucumberMaki"/>
+        <NamedIndividual IRI="#CucumberMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Egg"/>
+        <NamedIndividual IRI="#Egg1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#InariMiniISO"/>
+        <NamedIndividual IRI="#InariMiniISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#KaisoGunkan"/>
+        <NamedIndividual IRI="#KaisoGunkan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MasagoGunkan"/>
+        <NamedIndividual IRI="#MasagoGunkan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NatsuMaki"/>
+        <NamedIndividual IRI="#NatsuMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrawnAndChiveMaki"/>
+        <NamedIndividual IRI="#PrawnAndChiveMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PrawnNigiri"/>
+        <NamedIndividual IRI="#PrawnNigiri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RainbowRoll"/>
+        <NamedIndividual IRI="#RainbowRoll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SalmonDragonRoll"/>
+        <NamedIndividual IRI="#SalmonDragonRoll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SalmonMaki"/>
+        <NamedIndividual IRI="#SalmonMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SalmonNigiri"/>
+        <NamedIndividual IRI="#SalmonNigiri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SalmonSashimi"/>
+        <NamedIndividual IRI="#SalmonSashimi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SesameSearedSalmon"/>
+        <NamedIndividual IRI="#SesameSearedSalmon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftShellCrabHandRoll"/>
+        <NamedIndividual IRI="#SoftShellCrabHandRoll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SoftShellCrabISO"/>
+        <NamedIndividual IRI="#SoftShellCrabISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SpicyChickenISO"/>
+        <NamedIndividual IRI="#SpicyChickenISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SpicyTunaMiniISO"/>
+        <NamedIndividual IRI="#SpicyTunaMiniISO"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TamagoNigiri"/>
+        <NamedIndividual IRI="#TamagoNigiri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TunaMaki"/>
+        <NamedIndividual IRI="#TunaMaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TunaNigiri"/>
+        <NamedIndividual IRI="#TunaNigiri"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TunaSashimi"/>
+        <NamedIndividual IRI="#TunaSashimi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#VegetableFutomaki"/>
+        <NamedIndividual IRI="#VegetableFutomaki"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#VegetableHandRoll"/>
+        <NamedIndividual IRI="#VegetableHandRoll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoRoll"/>
+        <NamedIndividual IRI="#YoRoll"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isExpiredIn"/>
+        <NamedIndividual IRI="#Egg1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTimeStamp">2024-12-20T15:30:00Z</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasCookingStyle"/>
         <ObjectProperty IRI="#hasCharacteristic"/>
@@ -3499,10 +3732,6 @@
         <ObjectProperty IRI="#hasIngredient"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasOrigin"/>
-        <ObjectProperty IRI="#hasCharacteristic"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasSpiciness"/>
         <ObjectProperty IRI="#hasCharacteristic"/>
     </SubObjectPropertyOf>
@@ -3515,8 +3744,8 @@
         <ObjectProperty IRI="#hasIngredient"/>
     </SubObjectPropertyOf>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#hasOrgan"/>
-        <ObjectProperty IRI="#isOrganOf"/>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectProperty IRI="#ispartof"/>
     </InverseObjectProperties>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#hasDoneness"/>
@@ -3535,39 +3764,31 @@
     </TransitiveObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasCharacteristic"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasCookingStyle"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasDoneness"/>
-        <Class IRI="#SushiIngredient"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasOrgan"/>
-        <Class IRI="#Fish"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasOrigin"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasSpiciness"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasTaste"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasType"/>
-        <Class IRI="#NamedSushi"/>
+        <Class IRI="#Sushi"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasCharacteristic"/>
-        <Class IRI="#IngredientCharacteristic"/>
+        <Class IRI="#IngredientType"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasCookingStyle"/>
@@ -3575,7 +3796,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasCrust"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasDoneness"/>
@@ -3583,11 +3804,11 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasFilling"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasIngredient"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasSpiciness"/>
@@ -3599,22 +3820,26 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasTopping"/>
-        <Class IRI="#SushiIngredient"/>
+        <Class IRI="#Ingredient"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasType"/>
         <Class IRI="#SushiType"/>
     </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isOrganOf"/>
-        <Class IRI="#Fish"/>
-    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="#hasCalorificvalue"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isExpiredIn"/>
+        <Class IRI="#Ingredient"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#hasCalorificvalue"/>
         <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isExpiredIn"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -3638,7 +3863,7 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#IngredientCharacteristic</IRI>
+        <IRI>#IngredientType</IRI>
         <Literal>characterstics of the ingredients used to make the sushi</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -3646,11 +3871,6 @@
         <IRI>#KatsuSauce</IRI>
         <Literal>Ingredients:
 SUGAR, APPLESAUCE, WATER, VINEGAR, NATURALLY BREWED SOY SAUCE (WATER, WHEAT, SOYBEANS, SALT), SALT, MODIFIED FOOD STARCH, ONION PUREE, TOMATO PASTE, CARROT PUREE, SPICES, CARAMEL, GARLIC POWDER, MALTODEXTRIN, SODIUM BENZOATE: LESS THAN 1/10 OF 1% AS A PRESERVATIVE</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#NamedSushi</IRI>
-        <Literal>pieces of sushi</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -3681,6 +3901,11 @@ Actually, because no ingredient is specified as non-spicy ingredient, the result
 
 Query: not SpicyIngredient
 Result:nothing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sushi</IRI>
+        <Literal>pieces of sushi</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -3731,13 +3956,6 @@ Result:nothing</Literal>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#hasIngredient</IRI>
         <Literal>used between the sushi piece and its ingredients</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasOrgan</IRI>
-        <Literal>to link fish ingredients with their organs
-Yellowfin Tuna -&gt; Yellowfin Tuna loin
-Salmon -&gt; Salmon Skin</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
